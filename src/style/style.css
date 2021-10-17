@@ -20,17 +20,20 @@
     padding: 0;
     box-sizing: border-box;
 }
-
 body {
     background-color: var(--color-bg);
     font-family: var(--font-secondary);
     color: var(--color-secondary);
 }
+main {
+    max-width: 1200px;
+    margin: var(--navbar-h) auto;
+}
 ul {
     list-style-type: none;
 }
 
-/* NavBar */
+/* Navegation Bar */
 header {
     position: fixed;
     top: 0;
@@ -103,6 +106,11 @@ header {
     color: var(--color-secondary);
 }
 
+.btn {
+    color: crimson;
+}
+
+/* Keyframes */
 @keyframes dropdownMenuSlide {
     0%{
         opacity: 0;

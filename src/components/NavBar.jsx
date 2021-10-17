@@ -1,6 +1,7 @@
-function NavBar() {
+import { CartWidget } from "./CartWidget"
+
+export const NavBar = () => {
     return (
-        <header>
         <nav className="NavBar">
             <h1><span>Game</span>Shop</h1>
             <ul className="NavBar__menu">
@@ -29,12 +30,10 @@ function NavBar() {
                     </ul>
                 </li>
                 <li className="NavBar__menu-item">
-                    <box-icon name='cart' color='#ffffff' ></box-icon>
+                    <CartWidget />
                 </li>
             </ul>
+            
         </nav>
-        </header>
-    );
+    )
 }
-
-export default NavBar;
