@@ -6,12 +6,8 @@ import "boxicons"
 function App() {
   return (
     <>
-      <header>
         <NavBar />
-      </header>
-      <main>
-        <ItemListContainer greeting="Catalogo de productos" /> 
-      </main>
+        <ItemListContainer greeting="Catalogo de productos" />
     </>
   );
 }

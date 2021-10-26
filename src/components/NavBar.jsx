@@ -11,7 +11,7 @@ export const NavBar = () => {
                         <li><a href="#/">All</a></li>
                         <li><a href="#/">Best Seller</a></li>
                         <li><a href="#/">Offer</a></li>
-                    </ul>
+                    </ul>  
                 </li>
                 <li className="NavBar__menu-item">
                     <span>PS4</span>
@@ -19,7 +19,7 @@ export const NavBar = () => {
                         <li><a href="#/">All</a></li>
                         <li><a href="#/">Best Seller</a></li>
                         <li><a href="#/">Offer</a></li>
-                    </ul>
+                    </ul>  
                 </li>
                 <li className="NavBar__menu-item">
                     <span>PS5</span>
@@ -27,7 +27,7 @@ export const NavBar = () => {
                         <li><a href="#/">All</a></li>
                         <li><a href="#/">Best Seller</a></li>
                         <li><a href="#/">Offer</a></li>
-                    </ul>
+                    </ul>  
                 </li>
                 <li className="NavBar__menu-item">
                     <CartWidget />
