@@ -114,27 +114,51 @@ header {
 .itemListContainer {
     width: 100%;
     display: grid;
-    grid-template-columns: repeat(auto-fill,minmax(18rem, 1fr));
+    grid-template-columns: repeat(auto-fill,minmax(12rem,1fr));
     gap: 1rem;
 }
 
-/* Item List */
-.itemList {
+/* Item */
+.item {
+    background-color: var(--color-secondary);
+    color: var(--color-bg);
     padding: 1rem;
+    border-radius: 1.5rem;
+}
+.item img {
+    width: 100%;
+    padding: .5rem;
+}
+.item .item__main {
+    padding: .5rem;
+}
+.item .item__main h3 {
+    height: 2.5rem;
+    line-height: 1.2rem;
     display: flex;
-    flex-direction: column;
     align-items: center;
-    justify-content: center;
+    font-family: var(--font-primary);
+    font-size: 1.2rem;
+}
+.item .item__main p {
+    font-size: .8rem;
+    color: var(--color-tertiary);
+}
+.item .item__main span {
+    font-size: .8rem;
+    margin: .3rem 0;
+}
+.item .item__main h4 {
+    color: var(--color-primary);
+    font-size: 1.5rem;
 }
 
 /* Item Count */
 .itemCount {
     width: 100%;
-    margin: .5rem 0;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
 }
 .itemCount__counter {
     width: 100%;
@@ -142,27 +166,28 @@ header {
     align-items: center;
     justify-content: space-evenly;
 }
-.itemCount__counter button {
-    background: none;
-    border: none;
-    cursor: pointer;
+.itemCount__counter span {
     color: var(--color-primary);
+}
+.itemCount__counter button {
+    border: none;
+    background: none;
     font-size: 2rem;
+    color: var(--color-primary);
+    cursor: pointer;
 }
 
 .btn {
-    border: .1rem solid var(--color-primary);
-    border-radius: 1rem;
+    border: none;
+    border-radius: 1.5rem;
+    background-color: var(--color-primary);
     color: var(--color-secondary);
-    font-size: .9rem;
-    background-color: transparent;
     padding: .5rem .8rem;
     cursor: pointer;
-    transition: .5s;
+    font-size: .8rem;
+    font-weight: bold;
 }
-.btn:hover {
-    background-color: var(--color-primary);
-}
+
 
 /* Keyframes */
 @keyframes dropdownMenuSlide {
