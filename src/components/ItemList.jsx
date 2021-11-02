@@ -1,5 +1,4 @@
-import React, {useState, useEffect} from 'react';
-import { ItemCount } from './ItemCount';
+import {useState} from 'react';
 import { getProducts } from '../services/getProducts';
 import { Item } from './Item';
 

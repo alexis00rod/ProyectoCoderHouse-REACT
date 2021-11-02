@@ -112,79 +112,81 @@ header {
 
 /* Item List Container*/
 .itemListContainer {
-    width: 100%;
     display: grid;
     grid-template-columns: repeat(auto-fill,minmax(12rem,1fr));
     gap: 1rem;
+    padding: 1rem;
 }
 
 /* Item */
 .item {
     background-color: var(--color-secondary);
-    color: var(--color-bg);
+    border-radius: 1rem;
     padding: 1rem;
-    border-radius: 1.5rem;
+    color: var(--color-bg);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.item h3 {
+    height: 3rem;
+    line-height: 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--color-primary);
 }
 .item img {
+    border-radius: 1rem;
     width: 100%;
-    padding: .5rem;
 }
-.item .item__main {
-    padding: .5rem;
-}
-.item .item__main h3 {
-    height: 2.5rem;
-    line-height: 1.2rem;
+
+/* ItemDetail */
+.itemDetail {
+    padding: 1rem;
     display: flex;
+    flex-direction: column;
     align-items: center;
-    font-family: var(--font-primary);
-    font-size: 1.2rem;
+    justify-content: center;
 }
-.item .item__main p {
-    font-size: .8rem;
+.itemDetail p {
+    display: flex;
+    flex-direction: column;
+    font-size: .9rem;
+}
+.itemDetail p span {
     color: var(--color-tertiary);
-}
-.item .item__main span {
     font-size: .8rem;
-    margin: .3rem 0;
 }
-.item .item__main h4 {
+.itemDetail h4 {
+    font-family: var(--font-primary);
     color: var(--color-primary);
     font-size: 1.5rem;
 }
 
 /* Item Count */
-.itemCount {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
 .itemCount__counter {
     width: 100%;
+    color: var(--color-primary);
     display: flex;
     align-items: center;
     justify-content: space-evenly;
 }
-.itemCount__counter span {
-    color: var(--color-primary);
-}
 .itemCount__counter button {
-    border: none;
     background: none;
-    font-size: 2rem;
+    border: none;
     color: var(--color-primary);
+    font-size: 2rem;
     cursor: pointer;
 }
 
 .btn {
-    border: none;
-    border-radius: 1.5rem;
     background-color: var(--color-primary);
+    border-radius: 1rem;
+    border: none;
     color: var(--color-secondary);
     padding: .5rem .8rem;
     cursor: pointer;
-    font-size: .8rem;
     font-weight: bold;
 }
 
