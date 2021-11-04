@@ -1,5 +1,7 @@
+import { Link } from "react-router-dom"
+
 export const CartWidget = () => {
     return(
-        <box-icon name='cart' color='#ffffff'animation='tada-hover' ></box-icon>
+        <Link to="/cart"><box-icon name='cart-alt' color='#ffffff' ></box-icon></Link>
     )
 }

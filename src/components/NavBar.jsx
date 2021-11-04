@@ -1,37 +1,16 @@
+import { Link } from "react-router-dom"
 import { CartWidget } from "./CartWidget"
 
 export const NavBar = () => {
     return (
         <nav className="NavBar">
-            <h1><span>Game</span>Shop</h1>
+            <h1><Link to="/"><span>Game</span>Shop</Link></h1>
             <ul className="NavBar__menu">
-                <li className="NavBar__menu-item">
-                    <span>PS2</span>
-                    <ul className="NavBar__dropdown-menu">
-                        <li><a href="#/">All</a></li>
-                        <li><a href="#/">Best Seller</a></li>
-                        <li><a href="#/">Offer</a></li>
-                    </ul>  
-                </li>
-                <li className="NavBar__menu-item">
-                    <span>PS3</span>
-                    <ul className="NavBar__dropdown-menu">
-                        <li><a href="#/">All</a></li>
-                        <li><a href="#/">Best Seller</a></li>
-                        <li><a href="#/">Offer</a></li>
-                    </ul>  
-                </li>
-                <li className="NavBar__menu-item">
-                    <span>PS4</span>
-                    <ul className="NavBar__dropdown-menu">
-                        <li><a href="#/">All</a></li>
-                        <li><a href="#/">Best Seller</a></li>
-                        <li><a href="#/">Offer</a></li>
-                    </ul>  
-                </li>
-                <li className="NavBar__menu-item">
-                    <CartWidget />
-                </li>
+                <li><Link to="/">Home</Link></li>
+                <li><Link to="/category/ps2">PS2</Link></li>
+                <li><Link to="/category/ps3">PS3</Link></li>
+                <li><Link to="/category/xbox360">XBOX 360</Link></li>
+                <CartWidget />
             </ul> 
         </nav>
     )

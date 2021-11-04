@@ -1,18 +1,23 @@
 import { useState, useEffect} from "react"
-import { getItem } from "../services/getProducts"
+import { useParams } from "react-router"
+import { getProducts } from "../services/getProducts"
 import { ItemDetail } from "./ItemDetail"
+import { Loader } from "./Loader"
 
 export const ItemDetailsContainer = () => {
-    const [product, setProduct] = useState({})
+    const [detail, setDetail] = useState({})
+    const [loading, setLoading] = useState(true)
+    const {idDetail} = useParams()
 
-    useEffect(()=>{
-        getItem
-        .then(res => setProduct(res))
-    })
+    useEffect(() => {
+        getProducts
+        .then(res => setDetail(res.find(p => p.id === parseInt(idDetail))))
+        .finally(() => setLoading(false))
+    },[idDetail])
 
     return (
         <>
-            <ItemDetail detail={product}/>
+            { loading ? <Loader /> : <ItemDetail detail={detail} /> }
         </>
     )  
 }

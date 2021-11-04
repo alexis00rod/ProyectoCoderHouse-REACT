@@ -1,16 +1,10 @@
-import {useState} from 'react';
-import { getProducts } from '../services/getProducts';
 import { Item } from './Item';
 
-export const ItemList = ()=>{
-    const [product, setProduct] = useState([])
-
-    getProducts
-    .then((res) => setProduct(res))
+export const ItemList = ({product})=>{
 
     return (
         <>
-        {product.map((p)=> <Item key={p.id} item={p} />)}
+            {product.map((p)=> <Item key={p.id} item={p} />)}
         </>
     )
         
