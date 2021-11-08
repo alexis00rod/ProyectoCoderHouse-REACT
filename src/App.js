@@ -13,14 +13,15 @@ function App() {
             <header>
                 <NavBar />
             </header>
-            <Switch>
-                <main>
+            <main>
+                <Switch>
                     <Route exact path="/" component={ItemListContainer} />
                     <Route exact path="/category/:idCategory" component={ItemListContainer}/>
+                    <Route exact path="/type/:idType" component={ItemListContainer}/>
                     <Route exact path="/detail/:idDetail" component={ItemDetailsContainer} />
                     <Route exact path="/cart" component={Cart} />
-                </main>
-            </Switch>
+                </Switch>
+            </main>
         </BrowserRouter>
 
     </>

@@ -8,6 +8,7 @@ export const ItemListContainer = ({greeting}) => {
     const [product, setProduct] = useState([])
     const [loading, setLoading] = useState(true)
     const { idCategory } = useParams()
+    const { idType } = useParams()
 
     useEffect(()=>{
         if(idCategory) {
@@ -20,12 +21,18 @@ export const ItemListContainer = ({greeting}) => {
             .finally(() => setLoading(false))
         }
     },[idCategory])
+
+    useEffect(()=>{
+        if(idType) {
+            getProducts.then(res => setProduct(res.filter(p => p.type === idType)))
+        } else {
+            getProducts.then(res => setProduct(res))
+        }
+    },[idType])
     
     return(
         <ul className="itemListContainer">
-            <>
             { loading ? <Loader /> : <ItemList product={product} /> }
-        </>
         </ul>
     )
 }

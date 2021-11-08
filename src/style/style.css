@@ -69,6 +69,7 @@ a {
 }
 .NavBar h1 a {
     color: var(--color-secondary);
+    font-family: var(--font-primary);
 }
 .NavBar h1 a span {
     color: var(--color-primary);
@@ -81,16 +82,18 @@ a {
 }
 .NavBar__menu li a {
     color: var(--color-secondary);
+    font-family: var(--font-primary);
+    font-size: 1.2rem;
 }
 
 /* Item List Container */
-
 .itemListContainer {
     width: 100%;
     display: grid;
     grid-template-columns: repeat(auto-fill,minmax(12rem,1fr));
     gap: 1rem;
     padding: 1rem;
+    position: relative;
 }
 
 /* Item */
@@ -99,88 +102,78 @@ a {
     height: 100%;
     background-color: var(--color-secondary);
     border-radius: .5rem;
-    padding: 1rem;
-    color: var(--color-primary);
+    display: flex;
+    justify-content: center;
+    align-items: stretch;
 }
-.item__header {
-    position: relative;
+.item:hover {
+    transform: scale(1.02);
 }
-.item__header h3 {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    background-color: var(--color-bg-transparent);
-    color: var(--color-secondary);
-    padding: .5rem;
+.item a {
+    color: var(--color-bg);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+.item__img {
+    height: 15rem;
+    overflow-y: hidden;
+}
+.item__img img {
     width: 100%;
-    border-bottom-left-radius: .5rem;
-    border-bottom-right-radius: .5rem;
+    border-top-left-radius: .5rem;
+    border-top-right-radius: .5rem;
 }
-.item__header img {
-    width: 100%;
-    border-radius: .5rem;
+.item__description {
+    padding: .5rem 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
-.item__main {
-    padding: 0.5rem;
-}
-.item__main a {
-    display: block;
-    width: max-content;
-    margin: .5rem auto;
-    text-align: center;
-    color: var(--color-primary);
-    font-weight: bold;
-    position: relative;
+.item__description h3 {
     font-size: .9rem;
+    height: 3rem;
+    line-height: 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
-.item__main a::after {
-    position: absolute;
-    content: "";
-    background-color: var(--color-primary);
-    top: 100%;
-    left: 20%;
-    right: 20%;
-    height: 0.1rem;
-    transition: .4s;
+.item__description h4 {
+    font-size: 2rem;
+    font-family: var(--font-primary);
+    color: var(--color-primary);
 }
-.item__main a:hover::after {
-    left: 0;
-    right: 0;
+.item__description h4 span {
+    font-size: 1.5rem;
 }
+
 
 /* Item Count */
 .itemCount {
     display: flex;
     flex-direction: column;
+    justify-content: center;
     align-items: center;
 }
 .itemCount__counter {
-    width: 50%;
-    margin: 0 auto;
     display: flex;
-    justify-content: space-evenly;
     align-items: center;
 }
 .itemCount__counter span {
-    font-size: .8rem;
+    color: var(--color-primary);
+    font-size: .9rem;
+    color: var(--color-primary);
     font-weight: bolder;
+    padding: 0 .5rem;
 }
 .itemCount__counter button {
     background: none;
     border: none;
     color: var(--color-primary);
-    font-weight: bold;
     font-size: 1.5rem;
-    cursor: pointer;
-}
-.btn {
-    background-color: var(--color-primary);
-    border: none;
-    color: var(--color-secondary);
-    font-size: .8rem;
     font-weight: bold;
-    padding: .5rem .8rem;
-    border-radius: .5rem;
     cursor: pointer;
 }
 
@@ -195,25 +188,30 @@ a {
     align-items: center;
     padding-top: 2rem;
     padding-bottom: 5rem;
+    position: relative;
 }
 .itemDetail__body {
+    width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
     padding-bottom: 5rem;
 }
 .itemDetail__body img {
+    width: 25rem;
+    margin: 0 1rem;
     border-radius: .5rem;
 }
 .itemDetail__header-main {
+    width: 25rem;
+    margin: 0 1rem;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    padding: 1rem;
 }
 .itemDetail__header-main h2 {
-    font-size: 2.5rem;
+    font-size: 3rem;
     margin-bottom: 2rem;
     position: relative;
     font-family: var(--font-primary);
@@ -229,18 +227,116 @@ a {
 }
 .itemDetail__header-main h3 {
     color: var(--color-primary);
-    font-size: 3rem;
+    font-size: 2.8rem;
     font-family: var(--font-primary);
+}
+.itemDetail__header-main h3 span {
+    font-size: 2.5rem;
 }
 .itemDetail__header-main h4 {
     text-transform: uppercase;
     color: var(--color-primary);
 }
-.itemDetail__header-main h4 span {
-    margin-left: 1rem;
+.itemDetail__header-main h4 a {
+    color: var(--color-primary);
+    position: relative;
+}
+.itemDetail__header-main h4 a::after {
+    position: absolute;
+    content: "";
+    background-color: var(--color-primary);
+    height: .1rem;
+    top: 100%;
+    left: 50%;
+    right: 50%;
+    transition: .3s;
+}
+.itemDetail__header-main h4 a:hover:after {
+    left: 0;
+    right: 0;
+}
+.itemDetail__header-main h4 a:nth-child(1) {
+    margin-right: 1rem;
 }
 .itemDetail__header-main p {
     margin-top: 1rem;
     font-size: .9rem;
     padding: 0 1rem;
+}
+
+/* Buttons */
+.btn {
+    display: block;
+    background-color: var(--color-primary);
+    border: none;
+    color: var(--color-secondary);
+    font-size: .8rem;
+    font-weight: bold;
+    padding: .5rem .8rem;
+    border-radius: .5rem;
+    cursor: pointer;
+}
+.btn__closeDetail {
+    width: 100%;
+    height: 3rem;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding-right: 2rem;
+}
+
+/* Loader */
+.loader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.loader__spinner {
+    display: inline-block;
+    position: relative;
+    width: 4rem;
+    height: 4rem;
+}
+.loader__spinner span {
+    display: inline-block;
+    position: absolute;
+    left: 0;
+    width: 1rem;
+    background-color: var(--color-primary);
+    animation: loaderSpinner 1.2s cubic-bezier(0, 0.5, 0.5, 1) infinite;
+}
+.loader__spinner span:nth-child(1) {
+    left: 0;
+    animation-delay: -0.24s;
+}
+.loader__spinner span:nth-child(2) {
+    left: 1.5rem;
+    animation-delay: -0.12s;
+}
+.loader__spinner span:nth-child(3) {
+    left: 3rem;
+    animation-delay: 0;
+}
+.loader p {
+    color: var(--color-primary);
+    font-family: var(--font-primary);
+    font-size: 2rem;
+}
+
+/* Keyframes */
+@keyframes loaderSpinner {
+    0% {
+        top: .5rem;
+        height: 4rem;
+    }
+    50%, 100% {
+        top: 1.5rem;
+        height: 2rem;
+    }
 }
