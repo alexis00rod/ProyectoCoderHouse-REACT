@@ -4,7 +4,7 @@ import { CartWidget } from "./CartWidget"
 export const NavBar = () => {
     return (
         <nav className="NavBar">
-            <h1><Link to="/"><span>Game</span>Shop</Link></h1>
+            <h1><Link to="/"><span>Game</span>Shop<box-icon name='joystick'></box-icon></Link></h1>
             <ul className="NavBar__menu">
                 <li><Link to="/">Home</Link></li>
                 <li><Link to="/category/ps2">PS2</Link></li>

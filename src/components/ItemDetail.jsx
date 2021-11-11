@@ -1,12 +1,17 @@
 import { Link } from "react-router-dom"
 import { useState } from "react/cjs/react.development"
+import { useCartContext } from "../context/CartContext"
 import { ItemCount } from "./ItemCount"
 
 export const ItemDetail = ({detail}) => {
     const [quantity, setQuatity] = useState(1)
 
+    const { addToCartList } = useCartContext()
+
     const onAdd = (quantityToAdd) => {
         setQuatity(quantityToAdd)
+        
+        addToCartList({detail, quantity: quantityToAdd})
         alert(`THE PRODUCT WAS ADDED TO THE CART: \nName: ${detail.name}\nCategory: ${detail.category}\nQuantity: ${quantityToAdd}\nTotal Price: $${quantityToAdd * detail.price}`)
     }
 
@@ -33,4 +38,4 @@ export const ItemDetail = ({detail}) => {
             </div>
         </>
     )  
-  }
+}

@@ -107,7 +107,8 @@ a {
     align-items: stretch;
 }
 .item:hover {
-    transform: scale(1.02);
+    transform: translateY(-.2rem);
+    box-shadow: 0rem .1rem .5rem .1rem var(--color-primary);
 }
 .item a {
     color: var(--color-bg);
@@ -126,7 +127,7 @@ a {
     border-top-right-radius: .5rem;
 }
 .item__description {
-    padding: .5rem 1rem;
+    padding: 0 1rem;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -139,8 +140,19 @@ a {
     display: flex;
     justify-content: center;
     align-items: center;
+    position: relative;
+}
+.item__description h3::after {
+    position: absolute;
+    content: "";
+    top: 100%;
+    left: 30%;
+    right: 30%;
+    height: 0.1rem;
+    background-color: var(--color-tertiary);
 }
 .item__description h4 {
+    margin: .5rem 0;
     font-size: 2rem;
     font-family: var(--font-primary);
     color: var(--color-primary);
