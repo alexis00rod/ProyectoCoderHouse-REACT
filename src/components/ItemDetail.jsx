@@ -10,9 +10,8 @@ export const ItemDetail = ({detail}) => {
 
     const onAdd = (quantityToAdd) => {
         setQuatity(quantityToAdd)
-        
         addToCartList({detail, quantity: quantityToAdd})
-        alert(`THE PRODUCT WAS ADDED TO THE CART: \nName: ${detail.name}\nCategory: ${detail.category}\nQuantity: ${quantityToAdd}\nTotal Price: $${quantityToAdd * detail.price}`)
+        // alert(`THE PRODUCT WAS ADDED TO THE CART: \nName: ${detail.name}\nCategory: ${detail.category}\nQuantity: ${quantityToAdd}\nTotal Price: $${quantityToAdd * detail.price}`)
     }
 
     return (

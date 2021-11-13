@@ -237,4 +237,3 @@ export const getProducts = new Promise ((res,rej) => {
         res(PRODUCTS)
     }, 2000);
 })
-

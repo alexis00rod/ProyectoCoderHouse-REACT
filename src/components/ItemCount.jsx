@@ -6,8 +6,8 @@ export const ItemCount = ({stock, initial, onAdd})=>{
 
     const [buttonType, setButtonType] = useState("add")
 
-    const AddToCartButton = () => <button className="btn" onClick={addToCart}>Add to Cart</button>
-    const ShowCartButton = () => <Link to="/cart" className="btn">Show Cart</Link>
+    const AddToCartButton = () => <button className="btn__primary" onClick={addToCart}>Add to Cart</button>
+    const ShowCartButton = () => <button className="btn__primary"><Link to="/cart" >Show Cart</Link></button>
 
     const addItem = ()=> (count < stock) ? setCount(count + 1) : alert("Alcanzo el maximo de stock")
     const removeItem = ()=> (count > initial) ? setCount(count - 1) : alert("No se puede remover mas")
