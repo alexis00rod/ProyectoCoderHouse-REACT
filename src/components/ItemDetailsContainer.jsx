@@ -1,6 +1,6 @@
 import { useState, useEffect} from "react"
 import { useParams } from "react-router"
-import { getProducts } from "../services/getProducts"
+import { getFirestore } from "../services/getFirestone"
 import { ItemDetail } from "./ItemDetail"
 import { Loader } from "./Loader"
 
@@ -10,9 +10,13 @@ export const ItemDetailsContainer = () => {
     const { idDetail } = useParams()
 
     useEffect(() => {
-        getProducts
-        .then(res => setDetail(res.find(p => p.id === parseInt(idDetail))))
+        const db = getFirestore()
+        const dbQuery = db.collection("items").doc(idDetail).get()
+
+        dbQuery
+        .then(resp => setDetail({id:resp.id,...resp.data()}))
         .finally(() => setLoading(false))
+
     },[idDetail])
 
     return (
