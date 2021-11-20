@@ -1,8 +1,69 @@
 import { useCartContext } from "../context/CartContext"
+import { useState } from "react/cjs/react.development"
 import { Link } from "react-router-dom"
+import firebase from "firebase"
+import "firebase/firestore"
+import { getFirestore } from "../services/getFirestone"
+import { CartTotal } from "./CartTotal"
+import { CartForm } from "./CartForm"
+import { CartItems } from "./CartItems"
+import swal from "sweetalert"
 
 export const Cart = () => {
-    const { cartList, cartPriceTotal, cartQuantityItems, removeItemToCart, emptyCart } = useCartContext()
+    const { cartList, cartPriceTotal, cartQuantityItems, emptyCart } = useCartContext()
+    const [formData, setFormData] = useState({name:"",phone:"",email:"",location:""})
+
+    const generateOrder = (e) => {
+        e.preventDefault()
+
+        let order = {}
+        order.date = firebase.firestore.Timestamp.fromDate(new Date())
+        order.buyer = formData
+        order.total = (cartPriceTotal + 4.99).toFixed(2)
+        order.items = cartList.map(item => {
+            const id = item.detail.id
+            const name = item.detail.name
+            const quantity = item.quantity
+            const price = item.detail.price * item.quantity
+
+            return {id,name,quantity,price}
+        })
+
+        const dbQuery = getFirestore()
+        dbQuery.collection("orders").add(order)
+        .then(resp => {
+            swal({
+                icon: "success",
+                title: "Your purchase was successful!",
+                text: `Your ID Order is: ${resp.id}`
+            })
+        })
+        .finally(() => {
+            emptyCart()
+        })
+
+        const itemsToUpdate = dbQuery.collection("items").where(
+            firebase.firestore.FieldPath.documentId(),"in",cartList.map(i => i.detail.id)
+        )
+        const batch = dbQuery.batch()
+
+        itemsToUpdate.get()
+        .then(collection => {
+            collection.docs.forEach(docSnapshot => {
+                batch.update(docSnapshot.ref, {
+                    stock: docSnapshot.data().stock - cartList.find(item => item.detail.id === docSnapshot.id).quantity
+                })
+            })
+            batch.commit()
+        })
+    }
+    
+    const getFormData = (e) => {
+        setFormData({
+            ...formData,
+            [e.target.name]:e.target.value
+        })
+    }
 
     return(
         <div className="cartList">
@@ -16,38 +77,15 @@ export const Cart = () => {
                 :
                 <div className="cartListContainer">
                     <ul className="cartListContainer__items">
-                        {
-                            cartList.map(item => 
-                                <li className="cartList__item">
-                                    <img src={`../assets/img/${item.detail.img}`} alt={item.detail.name} />
-                                    <div className="cartList__item-body">
-                                        <h3>{item.detail.name}</h3>
-                                        <button onClick={() => removeItemToCart(item.detail.id)}>Remove</button>
-                                    </div>
-                                    <h5><span>US${item.detail.price} </span>x{item.quantity} items</h5>
-                                    <h4>TOTAL: <span>US${item.quantity * item.detail.price}</span></h4>
-                                </li>
-                            )
-                        }
+                        { cartList.map(item => <CartItems item={item}/>) }
                         <li>
                             <button className="btn__primary"><Link to="/">Keep shopping</Link></button>
                         </li>
                     </ul>
-                    <ul className="cartListContainer__checkout">
-                        <li>
-                            <h4>Items: <i>x{cartQuantityItems}</i><span>US${cartPriceTotal}</span></h4>
-                        </li>
-                        <li>
-                            <h4>Delivery: <span>US$4.99</span></h4>
-                        </li>
-                        <li>
-                            <h3>Order total: <span>US${(cartPriceTotal + 4.99).toFixed(2)}</span></h3>
-                        </li>
-                        <li className="cartListContainer__checkout-controls">
-                            <button className="btn__secondary" onClick={() => emptyCart()}>Delete cart</button>
-                            <button className="btn__primary">Proceed to checkout</button>
-                        </li>
-                    </ul>
+                    <div className="cartListContainer__checkout">
+                        <CartForm formData={formData} getFormData={getFormData}/>
+                        <CartTotal generateOrder={generateOrder}/>
+                    </div> 
                 </div>
             }
         </div>

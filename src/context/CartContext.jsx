@@ -34,7 +34,6 @@ export const CartContextProvider = ({children}) => {
         setCartList([])
         setCartPriceTotal(0)
         setCartQuantityItems(0)
-        
     }
 
     return (

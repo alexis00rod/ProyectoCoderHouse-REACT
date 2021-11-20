@@ -17,12 +17,12 @@ export const ItemListContainer = () => {
         if(idCategory) {
             const dbQuery = db.collection("items").where("category","==",idCategory).get()
             dbQuery
-            .then(resp => setProduct(resp.docs.map(p => ({id: p.id, ...p.data()}))))
+            .then(resp => setProduct(resp.docs.map(item => ({id: item.id, ...item.data()}))))
             .finally(() => setLoading(false))
         } else {
             const dbQuery = db.collection("items").get()
             dbQuery
-            .then(resp => setProduct(resp.docs.map(p => ({id: p.id, ...p.data()}))))
+            .then(resp => setProduct(resp.docs.map(item => ({id: item.id, ...item.data()}))))
             .finally(() => setLoading(false))
         }
     },[idCategory])
@@ -35,7 +35,6 @@ export const ItemListContainer = () => {
             dbQuery
             .then(resp => setProduct(resp.docs.map(p => ({id: p.id, ...p.data()}))))
             .finally(() => setLoading(false))
-
             
         } else {
             const dbQuery = db.collection("items").get()
