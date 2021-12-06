@@ -16,3 +16,5 @@ const products = firebase.initializeApp(firebaseConfig);
 export function getFirestore() {    
     return firebase.firestore(products)
 }
+
+export const dbCollection = getFirestore().collection("items")
