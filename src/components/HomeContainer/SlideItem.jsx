@@ -5,7 +5,7 @@ export const SlideItem = ({items}) => {
         <li className="item">
             <Link to={`/shop/product/${items.id}`}>
                 <div className="item-img">
-                    <img src={items.img} alt={items.name} />
+                    <img src={items.imgIcon} alt={items.name} />
                 </div>
                 <div className="item-main">
                     <h3>{items.name}</h3>
