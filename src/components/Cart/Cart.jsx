@@ -1,18 +1,18 @@
+import firebase from "firebase"
+import "firebase/firestore"
+import { getFirestore, dbCollectionItems, dbCollectionOrders } from "../../services/getFirestone"
 import { useCartContext } from "../../context/CartContext"
 import { useState } from "react/cjs/react.development"
 import { Link } from "react-router-dom"
-import firebase from "firebase"
-import "firebase/firestore"
-import { getFirestore } from "../../services/getFirestone"
 import { CartForm } from "./CartForm"
 import { CartItems } from "./CartItems"
 import { CartTotal } from "./CartTotal"
 import swal from "sweetalert"
 
+
 export const Cart = () => {
-    const { cartList, cartPriceTotal, cartQuantityItems } = useCartContext()
+    const { cartList, cartPriceTotal, cartQuantityItems, emptyCart } = useCartContext()
     const [formData, setFormData] = useState({name:"",phone:"",email:"",location:""})
-    // const [idOrder, setIdOrder] = useState("")
 
     const generateOrder = (e) => {
         e.preventDefault()
@@ -30,30 +30,22 @@ export const Cart = () => {
             return { id, name, quantity, price }    
         })
 
-        const dbQuery = getFirestore()
-        dbQuery.collection("orders").add(order)
+        dbCollectionOrders.add(order)
         .then(resp => swal({
-            title: "Are you sure you want to finalize the purchase?",
-            icon: "warning",
-            buttons: true,
-            dangerMode: true,
-            })
-            .then(willDelete => {
-                if (willDelete) {
-                    swal({
-                        title: "Your purchase was successful!",
-                        text: `Purchase order: ${resp.id}`,
-                        icon: "success"
-                    });
-                }
+            title: "Your purchase was successful!",
+            text: `Purchase order: ${resp.id}`,
+            icon: "success"
             })
         )
-        // .then(resp => setIdOrder(resp.id))
+        .finally(() => {
+            emptyCart()
+        })
 
-        const itemsToUpdate = dbQuery.collection("items").where(
+        const itemsToUpdate = dbCollectionItems.where(
             firebase.firestore.FieldPath.documentId(),"in",cartList.map(i => i.detail.id)
         )
-        const batch = dbQuery.batch()
+
+        const batch = getFirestore().batch()
 
         itemsToUpdate.get()
         .then(collection => {
