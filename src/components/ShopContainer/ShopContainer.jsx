@@ -1,8 +1,9 @@
-import { getFirestore } from "../../services/getFirestone"
 import { useState, useEffect } from "react"
 import { useParams } from "react-router"
 import { ShopItemList } from "./ShopItemList"
 import { Loader } from "../Loader/Loader"
+
+import { dbCollectionItems } from "../../services/getFirestone"
 
 export const ShopContainer = () => {
     const [products, setProducts] = useState([])
@@ -10,11 +11,10 @@ export const ShopContainer = () => {
     const { idCategory } = useParams()
 
     useEffect(() => {
-        const db = getFirestore()
         const dbQuery = idCategory ? 
-        db.collection("items").where("category","==",idCategory).get() 
+        dbCollectionItems.where("category","==",idCategory).get() 
         :
-        db.collection("items").get()
+        dbCollectionItems.get()
 
         dbQuery
         .then(resp => setProducts(resp.docs.map(doc => ({
