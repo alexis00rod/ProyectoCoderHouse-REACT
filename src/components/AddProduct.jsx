@@ -1,5 +1,5 @@
 import { useState } from "react/cjs/react.development"
-import { dbCollection } from "../services/getFirestone"
+import { dbCollectionItems } from "../services/getFirestone"
 import firebase from "firebase"
 import "firebase/firestore"
 
@@ -9,7 +9,7 @@ export const AddProduct = () => {
 
     const addProductToDB = (e) => {
         e.preventDefault()
-        dbCollection.add(productToAdd)
+        dbCollectionItems.add(productToAdd)
 
         console.log(`Product add!`)
 
