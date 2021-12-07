@@ -8,9 +8,9 @@ export const Banner = () => {
     const [banner, setBanner] = useState({})
 
     useEffect(() => {
-        const dbQuery = dbCollectionItems.get()
+        const dbQuery = dbCollectionItems.doc("c6LH39NO3W0O4leYdmhU").get()
         dbQuery
-        .then(resp => setBanner(resp.docs[0].data()))
+        .then(resp => setBanner({id:resp.id, ...resp.data()}))
         .finally(() => setLoading(false))
 
     },[])
