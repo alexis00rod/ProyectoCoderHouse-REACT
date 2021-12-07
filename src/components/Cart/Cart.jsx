@@ -83,7 +83,6 @@ export const Cart = () => {
                             <ul className="cartlist-items">
                                 { cartList.map(item => <CartItems item={item}/>) }
                             </ul>
-                            {/* <button className="btn-primary"><Link to="/shop">Keep shopping</Link></button> */}
                             <CartTotal />
                         </div>
                     </div>

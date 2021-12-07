@@ -1,29 +1,16 @@
 import { Link } from "react-router-dom"
-import { useEffect, useState } from "react/cjs/react.development"
-import { dbCollection } from "../../services/getFirestone"
+import { useState } from "react/cjs/react.development"
 import { useCartContext } from "../../context/CartContext"
 import { ItemCount } from "../ItemCount"
-import { ShopItem } from "../ShopContainer/ShopItem"
 
 export const ItemDetail = ({detail}) => {
     const [quantity, setQuatity] = useState(1)
-    // const [similarProducts, setSimilarProducts] = useState([])
     const { addToCartList } = useCartContext()
 
     const onAdd = (quantityToAdd) => {
         setQuatity(quantityToAdd)
         addToCartList({detail, quantity: quantityToAdd})
     }
-
-    // useEffect(() => {
-    //     const dbQuery = dbCollection.where("category","==",detail.category).limit(3).get()
-    //     dbQuery
-    //     .then(resp => setSimilarProducts(resp.docs.map(doc => ({
-    //         id: doc.id,
-    //         ...doc.data()
-    //     }))))
-
-    // },[detail])
 
     return (
         <>
@@ -32,7 +19,7 @@ export const ItemDetail = ({detail}) => {
         </div>
         <section>
             <div className="item-detail">
-                {/* <Link to="/shop"><box-icon name='left-arrow-alt' ></box-icon></Link> */}
+                <Link to="/shop"><box-icon name='left-arrow-alt' ></box-icon></Link>
                 <div className="detail-body">
                     <div className="detail-header">
                         <h2>{detail.name}</h2>
