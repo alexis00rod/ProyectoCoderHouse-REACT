@@ -2,10 +2,15 @@ import { Order } from "./Order"
 
 export const UserOrders = ({orders}) => {
     return (
-        <ul>
+        <table>
+            <tr>
+                <th>Date</th>
+                <th>Description</th>
+                <th>Total</th>
+            </tr>
             {
                 orders.map(order => <Order order={order} key={order.id} />)
             }
-        </ul>
+        </table>
     )
 }

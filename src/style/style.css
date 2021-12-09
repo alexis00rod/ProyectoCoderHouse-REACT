@@ -57,6 +57,7 @@ section {
     padding: .5rem;
     display: flex;
     flex-wrap: wrap;
+    min-height: 80vh;
 }
 ul {
     list-style-type: none;
@@ -265,35 +266,6 @@ a {
     width: 100%;
     border-radius: 50%;
 }
-/* .navbar {
-    margin: auto;
-    width: 100%;
-    height: inherit;
-    max-width: 75rem;
-    display: flex;
-    justify-content: space-evenly;
-    align-items: center;
-}
-.navbar h1 a {
-    color: var(--color-secondary);
-    font-size: 1.5rem;
-}
-.navbar h1 a span {
-    font-size: 1.8rem;
-}
-.navbar-menu {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-}
-.navbar-menu li a {
-    color: var(--color-tertiary);
-}
-.navbar-menu li .link-active {
-    color: var(--color-secondary);
-} */
-
-
 
 /* Banner */
 .banner {
@@ -737,6 +709,9 @@ a {
 .user p {
     font-size: 1.5rem;
 }
+
+/* Orders */
+
 
 /* Text Color */
 .textColor {

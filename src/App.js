@@ -31,15 +31,13 @@ function App() {
                     <NavBar scroll={scroll} />
                     <ScrollRestoration />
                     <Switch>
-                    <Route exact path="/" component={HomeContainer} />
-                <main>
-                    <Route exact path="/shop" component={ShopContainer} />
-                    <Route exact path="/shop/category/:idCategory" component={ShopContainer}/>
-                    <Route exact path="/shop/product/:idProduct" component={ItemDetailContainer} />
-                    <Route exact path="/addProduct" component={AddProduct} />
-                    <Route exact path="/cart" component={Cart} />
-                    <Route exact path="/user" component={User} />
-                </main>
+                        <Route exact path="/" component={HomeContainer} />
+                        <Route exact path="/shop" component={ShopContainer} />
+                        <Route exact path="/shop/category/:idCategory" component={ShopContainer}/>
+                        <Route exact path="/shop/product/:idProduct" component={ItemDetailContainer} />
+                        <Route exact path="/addProduct" component={AddProduct} />
+                        <Route exact path="/cart" component={Cart} />
+                        <Route exact path="/user" component={User} />
                     </Switch>
                 <footer>
                     <Footer />
