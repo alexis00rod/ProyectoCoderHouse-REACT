@@ -1,8 +1,21 @@
+import { useState, useEffect } from "react"
 import { useUserContext } from "../../context/UserContext"
 import { UserOrders } from "./UserOrders"
+import { dbCollectionOrders } from "../../services/getFirestone"
 
 export const User = () => {
-    const {user, historyOrders} = useUserContext()
+    const { user } = useUserContext()
+    const [historyOrders, setHistoryOrders] = useState([])
+
+    useEffect(() => {
+        const dbUserOrders = dbCollectionOrders.orderBy("date","asc").get()
+        dbUserOrders
+        .then(resp => setHistoryOrders(resp.docs.map(order => ({
+            id: order.id,
+            ...order.data()
+        }))))
+        .catch(err => console.log(`error`, err))
+    }, [])
 
     return (
         <section>
