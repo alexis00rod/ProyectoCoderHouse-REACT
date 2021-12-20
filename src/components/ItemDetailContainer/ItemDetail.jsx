@@ -26,7 +26,7 @@ export const ItemDetail = ({detail}) => {
                         <p><span>{detail.category}</span><span>{detail.type}</span></p>
                     </div>
                     <div className="detail-main">
-                        <iframe width="560" height="315" src={detail.video} title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        <iframe width="560" height="315" src={detail.video} title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
                         <div className="detail-description">
                             <div className="detail-product">
                                 <div className="product-price">
