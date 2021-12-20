@@ -9,7 +9,6 @@ import { ItemDetailContainer } from "./components/ItemDetailContainer/ItemDetail
 import { User } from "./components/User/User"
 import { Cart } from "./components/Cart/Cart";
 import { Footer } from "./components/Footer/Footer";
-import { AddProduct } from "./components/AddProduct";
 import "./style/style.css";
 import "boxicons";
 
@@ -33,7 +32,6 @@ function App() {
                     <Route exact path="/shop" component={ShopContainer} />
                     <Route exact path="/shop/category/:idCategory" component={ShopContainer}/>
                     <Route exact path="/shop/product/:idProduct" component={ItemDetailContainer} />
-                    <Route exact path="/addProduct" component={AddProduct} />
                     <Route exact path="/cart" component={Cart} />
                     <Route exact path="/user" component={User} />
                 </Switch>
