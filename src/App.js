@@ -1,5 +1,4 @@
 import { useState } from "react";
-import {UserContextProvider} from "./context/UserContext";
 import {CartContextProvider} from "./context/CartContext";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 import ScrollRestoration from "react-scroll-restoration"
@@ -25,26 +24,24 @@ function App() {
     window.addEventListener("scroll",changeNavbarColor)
 
     return (
-        <UserContextProvider>
-            <CartContextProvider>
-                <BrowserRouter>
-                    <NavBar scroll={scroll} />
-                    <ScrollRestoration />
-                    <Switch>
-                        <Route exact path="/" component={HomeContainer} />
-                        <Route exact path="/shop" component={ShopContainer} />
-                        <Route exact path="/shop/category/:idCategory" component={ShopContainer}/>
-                        <Route exact path="/shop/product/:idProduct" component={ItemDetailContainer} />
-                        <Route exact path="/addProduct" component={AddProduct} />
-                        <Route exact path="/cart" component={Cart} />
-                        <Route exact path="/user" component={User} />
-                    </Switch>
-                <footer>
-                    <Footer />
-                </footer>
-                </BrowserRouter>
-            </CartContextProvider>
-        </UserContextProvider>
+        <CartContextProvider>
+            <BrowserRouter>
+                <NavBar scroll={scroll} />
+                <ScrollRestoration />
+                <Switch>
+                    <Route exact path="/" component={HomeContainer} />
+                    <Route exact path="/shop" component={ShopContainer} />
+                    <Route exact path="/shop/category/:idCategory" component={ShopContainer}/>
+                    <Route exact path="/shop/product/:idProduct" component={ItemDetailContainer} />
+                    <Route exact path="/addProduct" component={AddProduct} />
+                    <Route exact path="/cart" component={Cart} />
+                    <Route exact path="/user" component={User} />
+                </Switch>
+            <footer>
+                <Footer />
+            </footer>
+            </BrowserRouter>
+        </CartContextProvider>
     );
 }
 

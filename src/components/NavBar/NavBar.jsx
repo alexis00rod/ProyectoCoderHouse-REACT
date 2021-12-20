@@ -1,13 +1,15 @@
 import { Link } from "react-router-dom"
 import { CartWidget } from "../Cart/CartWidget"
-import { useUserContext } from "../../context/UserContext"
-import { useEffect } from "react/cjs/react.development"
+import { dbCollectionUsers } from "../../services/getFirestone"
+import { useState, useEffect } from "react"
 
 export const NavBar = ({scroll}) => {
-    const { user } = useUserContext()
+    const [user, setUser] = useState({})
 
     useEffect(() => {
-
+        const dbUser = dbCollectionUsers.doc("KUdLRz46NhuYyOBiLp4R").get()
+        dbUser
+        .then(resp => setUser({id: resp.id, ...resp.data()}))
     },[])
 
     return (
