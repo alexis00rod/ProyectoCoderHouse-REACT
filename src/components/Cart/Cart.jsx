@@ -81,7 +81,7 @@ export const Cart = () => {
                         <CartForm formData={formData} getFormData={getFormData} generateOrder={generateOrder}/>
                         <div className="cartlist-order">
                             <ul className="cartlist-items">
-                                { cartList.map(item => <CartItems item={item}/>) }
+                                { cartList.map(item => <CartItems key={item.detail.id} item={item}/>) }
                             </ul>
                             <CartTotal />
                         </div>

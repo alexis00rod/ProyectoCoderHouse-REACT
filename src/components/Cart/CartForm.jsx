@@ -9,25 +9,25 @@ export const CartForm = ({ formData, getFormData, generateOrder }) => {
             <div className="form-input">
                 <label htmlFor="name">Full name:</label>
                 <span>
-                    <input type="text" name="name" value={formData.name} placeholder="Your full name" required />
+                    <input type="text" name="name" defaultValue={formData.name} placeholder="Your full name" required />
                 </span>
             </div>
             <div className="form-input">
                 <label htmlFor="phone">Phone number:</label>
                 <span>
-                    <input type="text" name="phone" value={formData.phone} placeholder="Your email address" required />
+                    <input type="text" name="phone" defaultValue={formData.phone} placeholder="Your email address" required />
                 </span>
             </div>
             <div className="form-input">
                 <label htmlFor="email">Email address:</label>
                 <span>
-                    <input type="text" name="email" value={formData.email} placeholder="Your phone number" required />
+                    <input type="text" name="email" defaultValue={formData.email} placeholder="Your phone number" required />
                 </span>
             </div>
             <div className="form-input">
                 <label htmlFor="location">Location:</label>
                 <span>
-                    <input type="text" name="location" value={formData.location} placeholder="Your location" required />
+                    <input type="text" name="location" defaultValue={formData.location} placeholder="Your location" required />
                 </span>
             </div>
             <div className="form-submit">
