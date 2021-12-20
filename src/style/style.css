@@ -711,7 +711,34 @@ a {
 }
 
 /* Orders */
+.user-orders {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+}
+.orders {
+    width: 25rem;
+}
+.orders thead th {
+    font-size: 1.2rem;
+}
+.orders tr {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-align: center;
+    gap: 1rem;
+    border-bottom: .1rem solid var(--color-tertiary);
+    padding: .5rem 0;
+}
 
+.order-items {
+    display: flex;
+    flex-direction: column;
+    font-size: .8rem;
+}
 
 /* Text Color */
 .textColor {

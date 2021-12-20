@@ -1,15 +1,17 @@
-export const Order = ({order}) => {
+export const Order = ({purchase}) => {
 
     return (
         <tr>
             <td>
-                <p>{order.date.toDate().getDate()}/{order.date.toDate().getMonth()}/{order.date.toDate().getFullYear()}</p>
+                <p>{purchase.date.toDate().getDate()}/{purchase.date.toDate().getMonth()}/{purchase.date.toDate().getFullYear()}</p>
             </td>
             <td>
-                <p>{order.items.length} items</p>
+                <ul className="order-items">
+                    {purchase.items.map(item => <li key={item.id}>{item.name}({item.quantity})</li>)}
+                </ul>
             </td>
             <td>
-                <h4>US${order.total}</h4>
+                <h4>US${purchase.total}</h4>
             </td>
         </tr>
     )
